@@ -10,6 +10,7 @@
  */
 
 define('SUBTITLES_DRIVERS_PATH', realpath(dirname(__FILE__)."/drivers")."/");
+define('SUBTITLES_CONFIG_PATH', realpath(dirname(__FILE__)."/config")."/");
 
  
 /**
@@ -42,6 +43,42 @@ class Subtitles
 	
 }
 
+/**
+ * Subtitles_Config
+ * 
+ * Config main class helper
+ * 
+ * @package PHP_Subtitles
+ * @subpackage classes
+ */
+class Subtitles_Config {
+	
+	static $_configs = array();
+	
+	public function get($section, $config_var) {
+		if(!isset(self::$_configs[$section])) {
+			$filename = SUBTITLES_CONFIG_PATH.$section.".cfg.php";
+			if(!file_exists($filename)) {
+				throw new Exception("Cannot load config section '$section' since $filename does not exist.");
+			}
+			self::$_configs[$section] = include($filename);			
+		}
+		return (isset(self::$_configs[$section][$config_var])) ? self::$_configs[$section][$config_var] : NULL;
+	}
+}
+
+class Subtitles_Show {
+	
+}
+class Subtitles_Season {
+	
+}
+class Subtitles_Episode {
+	
+}
+
+
+	
 /**
  * Subtitles Result
  * 
