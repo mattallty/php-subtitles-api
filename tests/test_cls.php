@@ -27,7 +27,13 @@ function getBestSimilarString($original, $possibilities) {
 	return max($r);
 }
 
-function sortByBestSimilarString()
+function sortByBestSimilarString($a, $b) {
+	global $__str_to_match;
+	$a1 = similar_text($__str_to_match, $a);
+	$b1 = similar_text($__str_to_match, $b);
+	return ($a1 < $b1) ? -1 : (($a1 > $b1) ? 1 : 0);
+}
+
 $filename 	= "http://www.tvsubtitles.net/search.php?q=game+of+thrones";
 $doc		= new DOMDocument();
 
