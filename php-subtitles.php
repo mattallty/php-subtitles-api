@@ -9,8 +9,9 @@
  * @version 1.0
  */
 
-define('SUBTITLES_DRIVERS_PATH', realpath(dirname(__FILE__)."/drivers")."/");
-define('SUBTITLES_CONFIG_PATH', realpath(dirname(__FILE__)."/config")."/");
+define('SUBTITLES_BASE_PATH', realpath(dirname(__FILE__).DIRECTORY_SEPARATOR."drivers").DIRECTORY_SEPARATOR);
+define('SUBTITLES_DRIVERS_PATH', SUBTITLES_BASE_PATH."drivers".DIRECTORY_SEPARATOR);
+define('SUBTITLES_CONFIG_PATH', SUBTITLES_BASE_PATH."config".DIRECTORY_SEPARATOR);
 
  
 /**
@@ -67,6 +68,9 @@ class Subtitles_Config {
 	}
 }
 
+class Subtitles_Movie {
+	
+}
 class Subtitles_Show {
 	
 }
