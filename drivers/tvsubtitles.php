@@ -12,6 +12,14 @@ class Subtitles_TVSubtitles {
 	
 	public function search($type, $query, $lang = '') {
 		
+		if($type == Subtitles::TYPE_MOVIE) {
+			
+		}elseif($type == Subtitles::TYPE_SHOW) {
+			
+		}else{
+			throw new Subtitles_Exception("Invalid type given in ".__METHOD__);
+		}
+		
 	}
 }
 ?>

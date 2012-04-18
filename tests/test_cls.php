@@ -29,12 +29,14 @@ function getBestSimilarString($original, $possibilities) {
 
 function sortByBestSimilarString($a, $b) {
 	global $__str_to_match;
-	$a1 = similar_text($__str_to_match, $a);
-	$b1 = similar_text($__str_to_match, $b);
-	return ($a1 < $b1) ? -1 : (($a1 > $b1) ? 1 : 0);
+	$a1 = similar_text($__str_to_match, $a['title']);
+	$b1 = similar_text($__str_to_match, $b['title']);
+	echo "a1 = $a1 et b1 = $b1\n";
+	return ($b1 < $a1) ? -1 : (($b1 > $a1) ? 1 : 0);
 }
 
-$filename 	= "http://www.tvsubtitles.net/search.php?q=game+of+thrones";
+$__str_to_match = $search = "game of thrones";
+$filename 	= "http://www.tvsubtitles.net/search.php?q=".urlencode($search);
 $doc		= new DOMDocument();
 
 @$doc->loadHTML(file_get_contents($filename));
@@ -52,7 +54,7 @@ foreach($elements as $el)
 	foreach($imgs as $img) {
 		$langs[] = strtoupper($img->getAttribute('alt'));
 	}
-	$ret[] = array(
+	$ret[(string)$id] = array(
 		'id' => $id,
 		'title' => $title,
 		'languages' => $langs

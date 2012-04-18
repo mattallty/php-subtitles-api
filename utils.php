@@ -20,3 +20,7 @@ function dice_coefficient($str1, $str2) {
 	} 
 	return (2.0 * $intersection) / ($length1 + $length2);  
 }
+
+class Subtitles_Utils {
+	
+}

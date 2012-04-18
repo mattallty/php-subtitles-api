@@ -44,6 +44,10 @@ class Subtitles
 	
 }
 
+class Subtitles_Exception extends Exception {
+	
+}
+
 /**
  * Subtitles_Config
  * 
